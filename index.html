@@ -31,13 +31,12 @@
             </button>
         </div>
 
-   <!-- Menu Mobile Rideau (Correction définitive du bug d'affichage) -->
-        <div id="mobile-menu" class="hidden fixed inset-0 bg-[#0f172a] flex flex-col items-center justify-center space-y-8 text-xl font-semibold z-[9999]">
-            <button onclick="showPage('accueil')" class="text-sky-400 py-2 w-full text-center">Home</button>
-            <button onclick="showPage('about')" class="text-slate-200 py-2 w-full text-center">About</button>
-            <button onclick="showPage('services')" class="text-slate-200 py-2 w-full text-center">Services</button>
-            <button onclick="showPage('portfolio')" class="text-slate-200 py-2 w-full text-center">Portfolio</button>
-            <button onclick="showPage('contact')" class="text-slate-200 py-2 w-full text-center">Contact</button>
+   <div id="mobile-menu" class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center space-y-8 text-xl font-semibold transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-[9999] invisible">
+            <button onclick="showPage('accueil')" class="text-sky-400 py-2 w-full text-center hover:bg-slate-900">Home</button>
+            <button onclick="showPage('about')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">About</button>
+            <button onclick="showPage('services')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">Services</button>
+            <button onclick="showPage('portfolio')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">Portfolio</button>
+            <button onclick="showPage('contact')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">Contact</button>
         </div>
     </nav>
 
@@ -181,33 +180,36 @@
   const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        // Ouvrir ou fermer le menu au clic sur le bouton burger
+        // Ouverture / Fermeture du menu burger
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('translate-x-full')) {
+                mobileMenu.classList.remove('translate-x-full', 'invisible');
+                mobileMenu.classList.add('translate-x-0');
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full', 'invisible');
+            }
         });
 
         // Fonction pour changer de page
         function showPage(pageId) {
-            // Masquer toutes les sections
-            document.querySelectorAll('.page-section').forEach(section => {
+            // 1. Masquer absolument toutes les pages
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
                 section.classList.add('hidden');
             });
-            // Afficher la section demandée
-            document.getElementById(pageId).classList.remove('hidden');
 
-            // Mettre à jour la couleur des liens (Desktop)
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if(link.innerText.toLowerCase() === pageId || (pageId === 'accueil' && link.innerText.toLowerCase() === 'home')) {
-                    link.classList.remove('text-slate-400');
-                    link.classList.add('text-sky-400');
-                } else {
-                    link.classList.remove('text-sky-400');
-                    link.classList.add('text-slate-400');
-                }
-            });
+            // 2. Afficher la page demandée
+            const pageActive = document.getElementById(pageId);
+            if (pageActive) {
+                pageActive.classList.remove('hidden');
+            }
 
-            // Toujours masquer le menu mobile après avoir cliqué sur un lien
-            mobileMenu.classList.add('hidden');
+            // 3. Fermer automatiquement le menu mobile
+            if (mobileMenu) {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full', 'invisible');
+            }
         }
     </script>
 </body>
