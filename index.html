@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio | Business Intelligence & Data Analyst</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#0f172a] text-slate-200 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- BARRE DE NAVIGATION FIXE (Ne disparaît jamais) -->
+    <nav class="sticky top-0 bg-[#0f172a]/90 backdrop-blur-md w-full border-b border-slate-800/50 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-wider text-white">Portfolio<span class="text-sky-400">.</span></h1>
+            
+            <!-- Liens version Bureau -->
+            <div class="hidden md:flex space-x-8 font-medium">
+                <button onclick="showPage('accueil')" class="nav-link text-sky-400 hover:text-sky-300 transition">Home</button>
+                <button onclick="showPage('about')" class="nav-link text-slate-400 hover:text-sky-400 transition">About</button>
+                <button onclick="showPage('services')" class="nav-link text-slate-400 hover:text-sky-400 transition">Services</button>
+                <button onclick="showPage('portfolio')" class="nav-link text-slate-400 hover:text-sky-400 transition">Portfolio</button>
+                <button onclick="showPage('contact')" class="nav-link text-slate-400 hover:text-sky-400 transition">Contact</button>
+            </div>
+
+            <!-- Bouton Menu Mobile -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Rideau -->
+        <div id="mobile-menu" class="fixed inset-0 bg-[#0f172a] flex flex-col items-center justify-center space-y-8 text-xl font-semibold transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40">
+            <button onclick="showPage('accueil')" class="mobile-link text-sky-400">Home</button>
+            <button onclick="showPage('about')" class="mobile-link text-slate-400">About</button>
+            <button onclick="showPage('services')" class="mobile-link text-slate-400">Services</button>
+            <button onclick="showPage('portfolio')" class="mobile-link text-slate-400">Portfolio</button>
+            <button onclick="showPage('contact')" class="mobile-link text-slate-400">Contact</button>
+        </div>
+    </nav>
+
+    <!-- CONTENU PRINCIPAL (LES PAGES) -->
+    <main class="flex-grow flex items-center max-w-7xl mx-auto px-6 py-12 w-full">
+        
+        <!-- PAGE 1 : ACCUEIL (Visible par défaut) -->
+        <section id="accueil" class="page-section w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="text-center md:text-left space-y-6">
+                <h3 class="text-xl font-medium tracking-wide text-slate-400">Hi, Welcome! My Name is</h3>
+                <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white">Elsa KABORE</h2>
+                <h4 class="text-2xl md:text-3xl font-semibold text-slate-300">And I'm a <span class="text-sky-400">Data & BI Analyst</span></h4>
+                <p class="text-slate-400 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Spécialisée dans l'analyse de données, la modélisation SQL et la création de dashboards d'aide à la décision.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4 text-xl pt-2">
+                    <div class="flex justify-center md:justify-start space-x-4 text-xl pt-2">
+    <!-- Bouton LinkedIn -->
+    <a href="https://www.linkedin.com/in/elsa-kabore-7249b41b5?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="w-10 h-10 rounded-full border border-sky-500/30 flex items-center justify-center text-sky-400 hover:bg-sky-400 hover:text-[#0f172a] transition">
+        <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+
+    <!-- Bouton GitHub -->
+    <a href="#" target="_blank" class="w-10 h-10 rounded-full border border-sky-500/30 flex items-center justify-center text-sky-400 hover:bg-sky-400 hover:text-[#0f172a] transition">
+        <i class="fa-brands fa-github"></i>
+    </a>
+
+    <!-- Bouton WhatsApp -->
+    <a href="https://wa.me/22652987913" target="_blank" class="w-10 h-10 rounded-full border border-sky-500/30 flex items-center justify-center text-sky-400 hover:bg-sky-400 hover:text-[#0f172a] transition">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
+                </div>
+                <div class="pt-4">
+                    <!-- TON BOUTON CV -->
+<a href="CV_Elsa_Kabore.pdf" download="CV_Elsa_Kabore.pdf" class="inline-block border-2 border-sky-400 text-sky-400 px-6 py-2.5 rounded-full font-semibold hover:bg-sky-400 hover:text-[#0f172a] transition text-sm">
+    Download CV
+</a>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-sky-500/10 border-4 border-sky-400/30 flex items-center justify-center p-2 shadow-[0_0_40px_rgba(56,189,248,0.15)] overflow-hidden">
+                    <img src="ma_photo.png" alt="Elsa" class="w-full h-full object-cover object-top scale-135 rounded-full transition duration-500">
+                </div>
+            </div>
+        </section>
+
+    <!-- PAGE 2 : ABOUT (Inspirée du design moderne) -->
+        <section id="about" class="page-section w-full hidden py-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center max-w-6xl mx-auto">
+                
+                <!-- BLOC TEXTE ENCADRÉ (A gauche - 7 colonnes sur PC) -->
+                <div class="md:col-span-7 space-y-6 text-left">
+                    <h3 class="text-4xl font-bold text-white tracking-wide">About <span class="text-sky-400">Me</span></h3>
+                    
+                    <!-- La boîte arrondie et transparente style "Glassmorphism" -->
+                    <div class="border border-sky-500/20 bg-slate-900/40 backdrop-blur-md rounded-2xl p-6 md:p-8 space-y-6 shadow-[0_0_30px_rgba(56,189,248,0.05)]">
+                        <p class="text-slate-300 leading-relaxed text-sm md:text-base">
+                            I am <span class="text-white font-semibold">Elsa Kabore</span>, the analytical mind dedicated to transforming raw data into clear, actionable business strategies. As a versatile and detail-driven <span class="text-sky-400 font-semibold">Business Intelligence & Data Analyst</span>, I focus on crafting visual experiences and clean data models that drive impact.
+                        </p>
+                        
+                        <div class="border-t border-slate-800/60 my-4"></div>
+                        
+                        <p class="text-slate-300 leading-relaxed text-sm md:text-base">
+                            I specialize in relational database management systems like PostgreSQL, advanced SQL querying, and designing interactive dashboards. I work with organizations to help them shape strong analytical identities, optimize their collection workflows, and improve how they connect insights with decision-making.
+                        </p>
+                        
+                        <div class="border-t border-slate-800/60 my-4"></div>
+                        
+                        <p class="text-slate-300 leading-relaxed text-sm md:text-base font-medium text-sky-400/90">
+                            My goal is to turn complex datasets into clean, meaningful, and engaging data stories that not only look good but serve a defined strategic purpose.
+                        </p>
+                    </div>
+                </div>
+<!-- BLOC PHOTO GRAND FORMAT (Toute la longueur visible) -->
+                <div class="md:col-span-5 flex justify-center md:justify-end relative">
+                    <!-- Halo lumineux bleu en arrière-plan -->
+                    <div class="absolute inset-0 bg-sky-500/10 rounded-full blur-3xl transform scale-75 pointer-events-none"></div>
+                    
+                    <!-- Le conteneur s'adapte maintenant à la hauteur de l'image -->
+                    <div class="relative max-w-sm w-full overflow-hidden rounded-2xl border border-slate-800 bg-[#1e293b]/20 shadow-2xl">
+                        <!-- Changement ici : w-full et h-auto pour garder les proportions d'origine -->
+                        <img src="photo_about.png" alt="Elsa Kabore" class="w-full h-auto object-contain hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+ 
+                    
+
+            </div>
+        </section>
+
+        <!-- PAGE 3 : SERVICES (Cachée au début) -->
+        <section id="services" class="page-section w-full hidden py-12">
+            <h3 class="text-3xl font-bold text-center text-white mb-12">My <span class="text-sky-400">Services</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#1e293b]/40 p-6 rounded-xl border border-slate-800"><i class="fa-solid fa-chart-pie text-3xl text-sky-400 mb-4"></i><h4 class="text-xl font-bold text-white mb-2">Business Intelligence</h4><p class="text-slate-400 text-sm">Création de dashboards interactifs et visuels.</p></div>
+                <div class="bg-[#1e293b]/40 p-6 rounded-xl border border-slate-800"><i class="fa-solid fa-database text-3xl text-sky-400 mb-4"></i><h4 class="text-xl font-bold text-white mb-2">Analyse SQL</h4><p class="text-slate-400 text-sm">Nettoyage de bases de données complexes.</p></div>
+                <div class="bg-[#1e293b]/40 p-6 rounded-xl border border-slate-800"><i class="fa-solid fa-list-check text-3xl text-sky-400 mb-4"></i><h4 class="text-xl font-bold text-white mb-2">Collecte de Données</h4><p class="text-slate-400 text-sm">Mise en place d'outils de collecte terrain.</p></div>
+            </div>
+        </section>
+
+        <!-- PAGE 4 : PORTFOLIO (Cachée au début) -->
+        <section id="portfolio" class="page-section w-full hidden py-12">
+            <h3 class="text-3xl font-bold text-center text-white mb-12">Latest <span class="text-sky-400">Projects</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border border-slate-800 rounded-xl p-6 bg-[#1e293b]/20"><span class="text-xs font-semibold text-sky-400 uppercase">Data Analytics</span><h4 class="text-xl font-bold text-white mt-2 mb-3">Analyse de ventes</h4><p class="text-slate-400 text-sm mb-4">Nettoyage SQL et dashboard interactif.</p><a href="#" class="text-sky-400 text-sm">Voir →</a></div>
+                <div class="border border-slate-800 rounded-xl p-6 bg-[#1e293b]/20"><span class="text-xs font-semibold text-sky-400 uppercase">Data Management</span><h4 class="text-xl font-bold text-white mt-2 mb-3">Système de collecte</h4><p class="text-slate-400 text-sm mb-4">Formulaires automatisés (The Data Circle).</p><a href="#" class="text-sky-400 text-sm">Voir →</a></div>
+            </div>
+        </section>
+
+        <!-- PAGE 5 : CONTACT (Mise à jour Elsa) -->
+        <section id="contact" class="page-section w-full hidden text-center space-y-8 py-12">
+            <div class="max-w-md mx-auto space-y-4">
+                <h3 class="text-3xl font-bold text-white">Contact <span class="text-sky-400">Me</span></h3>
+                <p class="text-slate-400 text-sm">
+                    Un projet, une opportunité ou simplement envie d'échanger ? N'hésite pas à me contacter directement par e-mail ou sur WhatsApp.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                <!-- Bouton E-mail -->
+                <a href="mailto:elsakabore38@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-sky-400 text-[#0f172a] px-8 py-3 rounded-full font-bold hover:bg-sky-500 transition shadow-[0_0_20px_rgba(56,189,248,0.2)]">
+                    <i class="fa-solid fa-envelope"></i> Par Email
+                </a>
+                
+                <!-- Bouton WhatsApp direct -->
+                <a href="https://wa.me/22652987913" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-emerald-500 text-emerald-400 px-8 py-3 rounded-full font-bold hover:bg-emerald-500 hover:text-[#0f172a] transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Sur WhatsApp
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full text-center py-4 text-xs text-slate-500 border-t border-slate-800/50">
+        &copy; 2026 Elsa Kabore. All rights reserved.
+    </footer>
+
+    <!-- SCRIPT DE NAVIGATION INTERNE -->
+    <script>
+        function showPage(pageId) {
+            // 1. Cacher toutes les sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // 2. Afficher la section demandée
+            document.getElementById(pageId).classList.remove('hidden');
+
+            // 3. Mettre à jour la couleur des boutons du menu (Bureau)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.innerText.toLowerCase() === pageId || (pageId === 'accueil' && link.innerText.toLowerCase() === 'home')) {
+                    link.classList.remove('text-slate-400');
+                    link.classList.add('text-sky-400');
+                } else {
+                    link.classList.remove('text-sky-400');
+                    link.classList.add('text-slate-400');
+                }
+            });
+
+            // Fermer le menu mobile au cas où
+            document.getElementById('mobile-menu').classList.add('translate-x-full');
+        }
+
+        // Gestion du bouton Burger Mobile
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('translate-x-0');
+            if (isOpen) {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+            } else {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+            }
+        });
+    </script>
+</body>
+</html>
