@@ -177,39 +177,30 @@
 
     <!-- SCRIPT DE NAVIGATION INTERNE -->
     <script>
-  const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        // Ouverture / Fermeture du menu burger
-        menuBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('translate-x-full')) {
-                mobileMenu.classList.remove('translate-x-full', 'invisible');
-                mobileMenu.classList.add('translate-x-0');
-            } else {
-                mobileMenu.classList.remove('translate-x-0');
-                mobileMenu.classList.add('translate-x-full', 'invisible');
-            }
-        });
-
-        // Fonction pour changer de page
+  // Fonction de changement de page (Version corrigée anti-mélange)
         function showPage(pageId) {
-            // 1. Masquer absolument toutes les pages
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => {
+            // 1. Masquer toutes les sections de contenu
+            document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.add('hidden');
             });
+            // Afficher la section demandée
+            document.getElementById(pageId).classList.remove('hidden');
 
-            // 2. Afficher la page demandée
-            const pageActive = document.getElementById(pageId);
-            if (pageActive) {
-                pageActive.classList.remove('hidden');
-            }
+            // 2. Mettre à jour la couleur des liens du menu (Desktop)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.innerText.toLowerCase() === pageId || (pageId === 'accueil' && link.innerText.toLowerCase() === 'home')) {
+                    link.classList.remove('text-slate-400');
+                    link.classList.add('text-sky-400');
+                } else {
+                    link.classList.remove('text-sky-400');
+                    link.classList.add('text-slate-400');
+                }
+            });
 
-            // 3. Fermer automatiquement le menu mobile
-            if (mobileMenu) {
-                mobileMenu.classList.remove('translate-x-0');
-                mobileMenu.classList.add('translate-x-full', 'invisible');
-            }
+            // 3. CORRECTION MOBILE : Force le menu à se cacher et devenir totalement invisible
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full', 'invisible');
         }
     </script>
 </body>
