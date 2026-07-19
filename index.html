@@ -31,7 +31,8 @@
             </button>
         </div>
 
-   <div id="mobile-menu" class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center space-y-8 text-xl font-semibold transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-[9999] invisible">
+   <!-- On change "invisible" par "hidden" -->
+<div id="mobile-menu" class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center space-y-8 text-xl font-semibold transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-[9999] hidden">
             <button onclick="showPage('accueil')" class="text-sky-400 py-2 w-full text-center hover:bg-slate-900">Home</button>
             <button onclick="showPage('about')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">About</button>
             <button onclick="showPage('services')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">Services</button>
@@ -177,22 +178,28 @@
 
     <!-- SCRIPT DE NAVIGATION INTERNE -->
     <script>
-  // 1. Gestion du bouton Burger Mobile (Correction de l'ouverture)
+  // Gestion du bouton Burger
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
         menuBtn.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('translate-x-0');
-            if (isOpen) {
-                mobileMenu.classList.remove('translate-x-0');
-                mobileMenu.classList.add('translate-x-full', 'invisible');
+            // Si le menu est caché (hidden), on l'affiche
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden'); // On enlève le "display: none"
+                // Petit délai pour laisser le temps au navigateur de comprendre qu'il n'est plus hidden
+                setTimeout(() => {
+                    mobileMenu.classList.remove('translate-x-full');
+                    mobileMenu.classList.add('translate-x-0');
+                }, 10);
             } else {
-                // On retire 'invisible' et 'translate-x-full' pour laisser le menu apparaître
-                mobileMenu.classList.remove('translate-x-full', 'invisible');
-                mobileMenu.classList.add('translate-x-0');
+                // On cache le menu
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Attend la fin de l'animation avant de masquer
             }
         });
-
         // 2. Fonction de changement de page (Desktop & Mobile)
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(section => {
