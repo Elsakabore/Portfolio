@@ -41,7 +41,7 @@
     </nav>
 
     <!-- CONTENU PRINCIPAL (LES PAGES) -->
-    <main class="flex-grow flex items-center justify-center max-w-7xl mx-auto px-6 py-12 w-full">
+    <main class="flex-grow flex items-center justify-center max-w-7xl mx-auto px-6 pt-28 pb-12 w-full">
         
         <!-- PAGE 1 : ACCUEIL (Visible par défaut) -->
         <section id="accueil" class="page-section w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -177,16 +177,29 @@
 
     <!-- SCRIPT DE NAVIGATION INTERNE -->
     <script>
-  // Fonction de changement de page (Version corrigée anti-mélange)
+  // 1. Gestion du bouton Burger Mobile (Correction de l'ouverture)
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('translate-x-0');
+            if (isOpen) {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full', 'invisible');
+            } else {
+                // On retire 'invisible' et 'translate-x-full' pour laisser le menu apparaître
+                mobileMenu.classList.remove('translate-x-full', 'invisible');
+                mobileMenu.classList.add('translate-x-0');
+            }
+        });
+
+        // 2. Fonction de changement de page (Desktop & Mobile)
         function showPage(pageId) {
-            // 1. Masquer toutes les sections de contenu
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.add('hidden');
             });
-            // Afficher la section demandée
             document.getElementById(pageId).classList.remove('hidden');
 
-            // 2. Mettre à jour la couleur des liens du menu (Desktop)
             document.querySelectorAll('.nav-link').forEach(link => {
                 if(link.innerText.toLowerCase() === pageId || (pageId === 'accueil' && link.innerText.toLowerCase() === 'home')) {
                     link.classList.remove('text-slate-400');
@@ -197,8 +210,7 @@
                 }
             });
 
-            // 3. CORRECTION MOBILE : Force le menu à se cacher et devenir totalement invisible
-            const mobileMenu = document.getElementById('mobile-menu');
+            // Fermer et masquer proprement le menu mobile après la sélection d'une page
             mobileMenu.classList.remove('translate-x-0');
             mobileMenu.classList.add('translate-x-full', 'invisible');
         }
