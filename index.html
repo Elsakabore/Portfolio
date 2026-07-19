@@ -178,53 +178,21 @@
 
     <!-- SCRIPT DE NAVIGATION INTERNE -->
     <script>
-   const menuBtn = document.getElementById('menu-btn');
+  // 1. Gestion du bouton Burger Mobile (Correction d'ouverture)
+        const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuOverlay = document.getElementById('menu-overlay');
-        const menuPanel = mobileMenu.querySelector('.absolute.top-0.left-0');
-
-        function toggleMenu(open) {
-            if (open) {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => {
-                    menuOverlay.classList.remove('opacity-0');
-                    menuPanel.classList.remove('-translate-x-full');
-                }, 10);
+        
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('translate-x-0');
+            if (isOpen) {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full', 'invisible');
             } else {
-                menuOverlay.classList.add('opacity-0');
-                menuPanel.classList.add('-translate-x-full');
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300);
+                // On retire 'invisible' et 'translate-x-full' pour laisser le menu apparaître et glisser
+                mobileMenu.classList.remove('translate-x-full', 'invisible');
+                mobileMenu.classList.add('translate-x-0');
             }
-        }
-
-        // Ouvrir au clic sur le bouton burger
-        menuBtn.addEventListener('click', () => toggleMenu(true));
-
-        // Fermer si on clique sur le fond sombre en arrière-plan
-        menuOverlay.addEventListener('click', () => toggleMenu(false));
-
-        // Fonction de changement de page
-        function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.getElementById(pageId).classList.remove('hidden');
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if(link.innerText.toLowerCase() === pageId || (pageId === 'accueil' && link.innerText.toLowerCase() === 'home')) {
-                    link.classList.remove('text-slate-400');
-                    link.classList.add('text-sky-400');
-                } else {
-                    link.classList.remove('text-sky-400');
-                    link.classList.add('text-slate-400');
-                }
-            });
-
-            // Fermer le menu latéral après sélection d'une page
-            toggleMenu(false);
-        }
+        });
     </script>
 </body>
 </html>
