@@ -11,35 +11,23 @@
 </head>
 <body class="bg-[#0f172a] text-slate-200 font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- BARRE DE NAVIGATION FIXE (Ne disparaît jamais) -->
-    <nav class="sticky top-0 bg-[#0f172a]/90 backdrop-blur-md w-full border-b border-slate-800/50 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-wider text-white">Portfolio<span class="text-sky-400">.</span></h1>
-            
-            <!-- Liens version Bureau -->
-            <div class="hidden md:flex space-x-8 font-medium">
-                <button onclick="showPage('accueil')" class="nav-link text-sky-400 hover:text-sky-300 transition">Home</button>
-                <button onclick="showPage('about')" class="nav-link text-slate-400 hover:text-sky-400 transition">About</button>
-                <button onclick="showPage('services')" class="nav-link text-slate-400 hover:text-sky-400 transition">Services</button>
-                <button onclick="showPage('portfolio')" class="nav-link text-slate-400 hover:text-sky-400 transition">Portfolio</button>
-                <button onclick="showPage('contact')" class="nav-link text-slate-400 hover:text-sky-400 transition">Contact</button>
+<nav class="sticky top-0 bg-slate-950/90 backdrop-blur-md w-full border-b border-slate-800/50 z-[10000] px-6 py-4">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <a href="#" onclick="showPage('accueil')" class="text-xl font-bold text-white tracking-wider">Portfolio<span class="text-sky-400">.</span></a>
+                
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <button onclick="showPage('accueil')" class="nav-link text-sky-400 transition">Home</button>
+                    <button onclick="showPage('about')" class="nav-link text-slate-400 hover:text-sky-400 transition">About</button>
+                    <button onclick="showPage('services')" class="nav-link text-slate-400 hover:text-sky-400 transition">Services</button>
+                    <button onclick="showPage('portfolio')" class="nav-link text-slate-400 hover:text-sky-400 transition">Portfolio</button>
+                    <button onclick="showPage('contact')" class="nav-link text-slate-400 hover:text-sky-400 transition">Contact</button>
+                </div>
+
+                <button id="menu-btn" class="md:hidden text-slate-400 hover:text-white focus:outline-none z-[10001]">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
             </div>
-
-            <!-- Bouton Menu Mobile -->
-            <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50">
-                <i class="fa-solid fa-bars text-2xl"></i>
-            </button>
-        </div>
-
-   <!-- On change "invisible" par "hidden" -->
-<div id="mobile-menu" class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center space-y-8 text-xl font-semibold transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-[9999] hidden">
-            <button onclick="showPage('accueil')" class="text-sky-400 py-2 w-full text-center hover:bg-slate-900">Home</button>
-            <button onclick="showPage('about')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">About</button>
-            <button onclick="showPage('services')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">Services</button>
-            <button onclick="showPage('portfolio')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">Portfolio</button>
-            <button onclick="showPage('contact')" class="text-slate-200 py-2 w-full text-center hover:bg-slate-900">Contact</button>
-        </div>
-    </nav>
+        </nav>
 
     <!-- CONTENU PRINCIPAL (LES PAGES) -->
     <main class="flex-grow flex items-center justify-center max-w-7xl mx-auto px-6 pt-28 pb-12 w-full">
