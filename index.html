@@ -31,34 +31,16 @@
             </button>
         </div>
 
-    <!-- Menu Mobile Latéral Blanc Style Sidebar -->
-        <div id="mobile-menu" class="fixed inset-0 z-[9999] hidden">
-            <!-- Fond sombre semi-transparent derrière le menu -->
-            <div id="menu-overlay" class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+    <!-- Menu Mobile Rideau (Correction Arrière-plan Opaque) -->
+        <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-[#0b1329] border-l border-slate-800 flex flex-col pt-20 px-6 space-y-6 text-lg font-medium transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-[9999] shadow-2xl">
+            <!-- Petit titre discret pour le menu -->
+            <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Navigation</div>
             
-            <!-- Le panneau du menu blanc qui glisse de la gauche -->
-            <div class="absolute top-0 left-0 bottom-0 w-64 bg-white text-slate-800 p-6 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col space-y-4">
-                
-                <!-- Petit titre de section comme sur ton exemple -->
-                <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2">Navigation</div>
-                
-                <!-- Liens du menu -->
-                <button onclick="showPage('accueil')" class="text-left py-3 px-4 rounded-xl font-medium text-sky-600 bg-sky-50 flex justify-between items-center transition-colors">
-                    <span>Home</span> <i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
-                </button>
-                <button onclick="showPage('about')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
-                    <span>About</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
-                </button>
-                <button onclick="showPage('services')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
-                    <span>Services</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
-                </button>
-                <button onclick="showPage('portfolio')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
-                    <span>Portfolio</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
-                </button>
-                <button onclick="showPage('contact')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
-                    <span>Contact</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
-                </button>
-            </div>
+            <button onclick="showPage('accueil')" class="text-left py-2 px-3 rounded-lg text-sky-400 hover:bg-slate-800/50 transition">Home</button>
+            <button onclick="showPage('about')" class="text-left py-2 px-3 rounded-lg text-slate-300 hover:bg-slate-800/50 transition">About</button>
+            <button onclick="showPage('services')" class="text-left py-2 px-3 rounded-lg text-slate-300 hover:bg-slate-800/50 transition">Services</button>
+            <button onclick="showPage('portfolio')" class="text-left py-2 px-3 rounded-lg text-slate-300 hover:bg-slate-800/50 transition">Portfolio</button>
+            <button onclick="showPage('contact')" class="text-left py-2 px-3 rounded-lg text-slate-300 hover:bg-slate-800/50 transition">Contact</button>
         </div>
     </nav>
 
