@@ -31,13 +31,34 @@
             </button>
         </div>
 
-    <!-- Menu Mobile Rideau (Correction définitive du bug d'affichage) -->
-        <div id="mobile-menu" class="hidden fixed inset-0 bg-[#0f172a] flex flex-col items-center justify-center space-y-8 text-xl font-semibold z-[9999]">
-            <button onclick="showPage('accueil')" class="text-sky-400 py-2 w-full text-center">Home</button>
-            <button onclick="showPage('about')" class="text-slate-200 py-2 w-full text-center">About</button>
-            <button onclick="showPage('services')" class="text-slate-200 py-2 w-full text-center">Services</button>
-            <button onclick="showPage('portfolio')" class="text-slate-200 py-2 w-full text-center">Portfolio</button>
-            <button onclick="showPage('contact')" class="text-slate-200 py-2 w-full text-center">Contact</button>
+    <!-- Menu Mobile Latéral Blanc Style Sidebar -->
+        <div id="mobile-menu" class="fixed inset-0 z-[9999] hidden">
+            <!-- Fond sombre semi-transparent derrière le menu -->
+            <div id="menu-overlay" class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+            
+            <!-- Le panneau du menu blanc qui glisse de la gauche -->
+            <div class="absolute top-0 left-0 bottom-0 w-64 bg-white text-slate-800 p-6 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col space-y-4">
+                
+                <!-- Petit titre de section comme sur ton exemple -->
+                <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2">Navigation</div>
+                
+                <!-- Liens du menu -->
+                <button onclick="showPage('accueil')" class="text-left py-3 px-4 rounded-xl font-medium text-sky-600 bg-sky-50 flex justify-between items-center transition-colors">
+                    <span>Home</span> <i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
+                </button>
+                <button onclick="showPage('about')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
+                    <span>About</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
+                </button>
+                <button onclick="showPage('services')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
+                    <span>Services</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
+                </button>
+                <button onclick="showPage('portfolio')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
+                    <span>Portfolio</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
+                </button>
+                <button onclick="showPage('contact')" class="text-left py-3 px-4 rounded-xl font-medium text-slate-600 hover:bg-slate-50 flex justify-between items-center transition-colors">
+                    <span>Contact</span> <i class="fa-solid fa-chevron-right text-xs opacity-30"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -178,24 +199,40 @@
 
     <!-- SCRIPT DE NAVIGATION INTERNE -->
     <script>
-       const menuBtn = document.getElementById('menu-btn');
+   const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        // Ouvrir ou fermer le menu au clic sur le bouton burger
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuPanel = mobileMenu.querySelector('.absolute.top-0.left-0');
 
-        // Fonction pour changer de page
+        function toggleMenu(open) {
+            if (open) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    menuOverlay.classList.remove('opacity-0');
+                    menuPanel.classList.remove('-translate-x-full');
+                }, 10);
+            } else {
+                menuOverlay.classList.add('opacity-0');
+                menuPanel.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Ouvrir au clic sur le bouton burger
+        menuBtn.addEventListener('click', () => toggleMenu(true));
+
+        // Fermer si on clique sur le fond sombre en arrière-plan
+        menuOverlay.addEventListener('click', () => toggleMenu(false));
+
+        // Fonction de changement de page
         function showPage(pageId) {
-            // Masquer toutes les sections
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.add('hidden');
             });
-            // Afficher la section demandée
             document.getElementById(pageId).classList.remove('hidden');
 
-            // Mettre à jour la couleur des liens (Desktop)
             document.querySelectorAll('.nav-link').forEach(link => {
                 if(link.innerText.toLowerCase() === pageId || (pageId === 'accueil' && link.innerText.toLowerCase() === 'home')) {
                     link.classList.remove('text-slate-400');
@@ -206,8 +243,8 @@
                 }
             });
 
-            // Toujours masquer le menu mobile après avoir cliqué sur un lien
-            mobileMenu.classList.add('hidden');
+            // Fermer le menu latéral après sélection d'une page
+            toggleMenu(false);
         }
     </script>
 </body>
