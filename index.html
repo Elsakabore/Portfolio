@@ -28,7 +28,17 @@
                 </button>
             </div>
         </nav>
+<div id="mobile-menu-page" class="fixed inset-0 bg-[#0f172a] z-[20000] hidden flex-col items-center justify-center space-y-8">
+    <button id="close-menu-btn" class="absolute top-6 right-6 text-slate-400 hover:text-white text-3xl">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
 
+    <button onclick="navigateToPage('accueil')" class="text-2xl text-slate-200 hover:text-sky-400 font-medium transition">Home</button>
+    <button onclick="navigateToPage('about')" class="text-2xl text-slate-200 hover:text-sky-400 font-medium transition">About</button>
+    <button onclick="navigateToPage('services')" class="text-2xl text-slate-200 hover:text-sky-400 font-medium transition">Services</button>
+    <button onclick="navigateToPage('portfolio')" class="text-2xl text-slate-200 hover:text-sky-400 font-medium transition">Portfolio</button>
+    <button onclick="navigateToPage('contact')" class="text-2xl text-slate-200 hover:text-sky-400 font-medium transition">Contact</button>
+</div>
     <!-- CONTENU PRINCIPAL (LES PAGES) -->
     <main class="flex-grow flex items-center justify-center max-w-7xl mx-auto px-6 pt-28 pb-12 w-full">
         
@@ -209,6 +219,8 @@
             mobileMenu.classList.remove('translate-x-0');
             mobileMenu.classList.add('translate-x-full', 'invisible');
         }
+
+        
     </script>
 </body>
 </html>
